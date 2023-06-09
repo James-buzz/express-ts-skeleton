@@ -5,7 +5,8 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import { handleError } from './app/middlewares/errorHandler';
+import { handleError } from './app/middlewares/errorHandler.middleware';
+import morgan from './app/middlewares/morgan.middleware';
 // Routes
 import helloRoutes from './app/routes/hello.routes';
 import userRoutes from './app/routes/user.routes';
@@ -26,6 +27,7 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(morgan);
 
 // App routes
 app.use(helloRoutes);
